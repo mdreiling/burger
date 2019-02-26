@@ -4,16 +4,22 @@ var connection = require("../config/connection.js");
 var orm = {
     
 // Select all model for page load
-    selectAll: function() {
+    selectAll: function(table, cb) {
         var queryString = "SELECT * FROM burgers";
         connection.query(queryString), function(err, result) {
-            if (err) throw err;
-            return result;
+            if (err) {
+                throw err;
+            }
+            cb(result);
         }
-
+        
+    },
+    
+// Insert one model for adding burger
+    insertOne: function(burgerName, ingredients) {
+        var queryString = "INSERT INTO burgers";
     }
 
-// Insert one model for adding burger
 
 // Update one model for updating burger (devouring)
 
