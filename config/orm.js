@@ -44,13 +44,46 @@ var orm = {
     },
     
 // Insert one model for adding burger
-    insertOne: function(table, burgerName, ingredients) {
+    insertOne: function(table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
-    }
+
+        queryString += " (";
+        queryString += cols.toString();
+        queryString += ") ";
+        queryString += "VALUES (";
+        queryString += addQuestionMarks(vals.length);
+        queryString += ") ";
+
+        console.log(queryString);
+
+        connection.query(queryString, vals, function(err, result) {
+            if (err) {
+                throw err;
+            }
+
+            cb(result);
+        });
+    },
 
 
 // Update one model for updating burger (devouring)
+    updateOne: function(table, objColVals, condition, cb) {
+        var queryString = "UPDATE " + table;
 
+        queryString += " SET ";
+        queryString += objtoSearch(objColVals);
+        queryString += " WHERE ";
+        queryString += condition;
+
+        console.log(queryString);
+        connection.query(queryString, function(err, result) {
+            if (err) {
+                throw err;
+            }
+
+            cb(result);
+        })
+    }
 };
 
 // Export the orm object for the model
