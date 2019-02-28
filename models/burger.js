@@ -2,6 +2,8 @@
 
 var orm = require("../config/orm.js");
 
+// Calls to database
+
 var burger = {
     
     // Read all of the database
@@ -26,4 +28,5 @@ var burger = {
     }
 };
 
+// Export for router
 module.exports = burger;
