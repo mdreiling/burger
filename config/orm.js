@@ -33,14 +33,15 @@ var orm = {
     
 // Select all model for page load
     selectAll: function(table, cb) {
+        console.log("SelectAll data call in orm selected")
         var queryString = "SELECT * FROM " + table + ";";
         connection.query(queryString), function(err, result) {
+            console.log("Select All connection query fired")
             if (err) {
                 throw err;
             }
             cb(result);
         }
-        
     },
     
 // Insert one model for adding burger

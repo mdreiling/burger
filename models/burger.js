@@ -1,6 +1,6 @@
 // Dependencies
 
-var orm = require("../config/orm.js");
+var orm = require("../config/orm");
 
 // Calls to database
 
@@ -8,7 +8,9 @@ var burger = {
     
     // Read all rows of the database
     selectAll: function(cb) {
+        console.log("SelectAll in burger.js fired")
         orm.selectAll("burgers", function(res) {
+            console.log("ORM SelectAll in burger.js fired")
             cb(res);
         });
     },

@@ -4,11 +4,14 @@ var express = require("express");
 
 var router = express.Router();
 
-var burger = require("../models/burger.js");
+var burger = require("../models/burger");
 
 // Routing
 // Initial pull of all data
 router.get("/", function(req, res) {
+    console.log("Get route in burgers controller fired.")
+    res.render("index");
+
     burger.selectAll(function(data) {
         var hbsObject = {
             burgers: data
@@ -19,7 +22,7 @@ router.get("/", function(req, res) {
 });
 
 // Create route
-router.post("/api/burgers", function(res, res) {
+router.post("/api/burgers", function(req, res) {
     burger.insertOne([
         "burger_name", "devoured"
     ], [
