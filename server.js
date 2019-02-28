@@ -1,9 +1,10 @@
 // Dependencies
 var express = require("express");
-var exsHB = require("express-handlebars");
+var exphbs = require("express-handlebars");
+var routes = require("./controllers/burgers_controller.js");
 
 // Server set up
-var PORT = process.env.PORT || 12000;
+var PORT = process.env.PORT || 12120;
 
 var app = express();
 
@@ -15,12 +16,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Set Handlebars
-app.engine("handlebars"), exsHB({ defaultLayout: "main" });
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and allow server access to them
-var routes = require("./controllers/burgers_controller.js");
-
 app.use(routes);
 
 // start server

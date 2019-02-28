@@ -6,7 +6,7 @@ var orm = require("../config/orm.js");
 
 var burger = {
     
-    // Read all of the database
+    // Read all rows of the database
     selectAll: function(cb) {
         orm.selectAll("burgers", function(res) {
             cb(res);
