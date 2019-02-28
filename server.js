@@ -4,7 +4,7 @@ var exphbs = require("express-handlebars");
 var routes = require("./controllers/burgers_controller.js");
 
 // Server set up
-var PORT = process.env.PORT || 12120;
+var PORT = process.env.PORT || 12300;
 
 var app = express();
 
