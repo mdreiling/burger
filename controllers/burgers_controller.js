@@ -7,7 +7,6 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 // Routing
-
 // Initial pull of all data
 router.get("/", function(req, res) {
     burger.selectAll(function(data) {
