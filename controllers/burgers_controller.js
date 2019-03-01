@@ -10,7 +10,6 @@ var burger = require("../models/burger");
 // Initial pull of all data
 router.get("/", function(req, res) {
     console.log("Get route in burgers controller fired.")
-    res.render("index");
 
     burger.selectAll(function(data) {
         var hbsObject = {
